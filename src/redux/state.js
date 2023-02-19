@@ -1,9 +1,11 @@
+  import {rerenderEntireTree} from "../render"
   let state = {
     profilePage: {
       postsData: [
         {id: "1", message: "First post", likescount: "0"},
         {id: "2", message: "Second pos", likescount: "15"},
-      ]
+      ],
+      // newPostText: 'it-kamasutra'
     },
     dialogsPage: {
       dialogsData: [
@@ -19,4 +21,17 @@
     }
 
   }
+  window.state = state;
+  
+export let addPost = (postMessage) => {
+  let newPost = {
+    id: 5,
+    message: postMessage,
+    likescount: 0
+  };
+  state.profilePage.postsData.push(newPost);
+  rerenderEntireTree(state)
+}
+
+
   export default state;

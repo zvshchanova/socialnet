@@ -3,6 +3,7 @@ import style from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts =(props) =>{
+    debugger;
 // const state = useContext(StateContext);
      let postsItems = props.posts.map( el => <Post id={el.id} message={el.message} likescount={el.likescount} key={el.id}/>);
     // let postsItems = state.posts.map( el => <Post id={el.id} message={el.message} likescount={el.likescount} key={el.id}/>);
@@ -11,15 +12,17 @@ const MyPosts =(props) =>{
 
     const addPost = () =>{
         let text = newPostElement.current.value;
-        alert(text);        
-    }
+        //alert(text);        
+        props.addPost(text);
+        newPostElement.current.value ="";
+        }
 
     return(
             <div className={style.postBlock}>
                 <h2>My Posts</h2>
                 <div>
                     <div>
-                    <textarea ref={newPostElement}></textarea>
+                    <textarea ref={newPostElement}/>
                     </div>
                     <div>
                     <button  onClick={ addPost }>Add post</button>                    
