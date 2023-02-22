@@ -1,11 +1,11 @@
-  import {rerenderEntireTree} from "../render"
-  let state = {
+ let store = {
+  _state: {
     profilePage: {
       postsData: [
         {id: "1", message: "First post", likescount: "0"},
         {id: "2", message: "Second pos", likescount: "15"},
       ],
-      // newPostText: 'it-kamasutra'
+     newPostText: 'it-kamasutra'
     },
     dialogsPage: {
       dialogsData: [
@@ -19,19 +19,34 @@
         {id: 3, message: 'Yo!'},
       ]
     }
-
+  },
+  getState() {
+    return this._state;
+  },
+  _callsubscriber() {
+    console.log("State was added")
+  },
+  addPost() {
+    let newPost = {
+      id: 5,
+      message: this._state.profilePage.newPostText,      
+      likescount: 0
+    };
+    this._state.profilePage.postsData.push(newPost);
+    this._state.profilePage.newPostText = '';
+    this._callsubscriber(this._state)
+  },
+  subscribe(observe) {
+    this._callsubscriber = observe;
   }
-  window.state = state;
+ }
+ 
+ 
+
+ export default store;
   
-export let addPost = (postMessage) => {
-  let newPost = {
-    id: 5,
-    message: postMessage,
-    likescount: 0
-  };
-  state.profilePage.postsData.push(newPost);
-  rerenderEntireTree(state)
-}
+window.state = store;
+  
 
 
-  export default state;
+
