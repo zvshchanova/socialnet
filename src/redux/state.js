@@ -5,7 +5,7 @@
         {id: "1", message: "First post", likescount: "0"},
         {id: "2", message: "Second pos", likescount: "15"},
       ],
-     newPostText: 'it-kamasutra'
+    //  newPostText: 'it-kamasutra'
     },
     dialogsPage: {
       dialogsData: [
@@ -21,29 +21,29 @@
     }
   },
   getState() {
+    debugger;
     return this._state;
   },
   _callsubscriber() {
     console.log("State was added")
   },
-  addPost() {
+  addPost(postMessage) {
+    debugger;
     let newPost = {
       id: 5,
-      message: this._state.profilePage.newPostText,      
+      // message: this._state.profilePage.newPostText,    
+      message: postMessage,   
       likescount: 0
     };
     this._state.profilePage.postsData.push(newPost);
-    this._state.profilePage.newPostText = '';
+    // this._state.profilePage.newPostText = '';
     this._callsubscriber(this._state)
   },
   subscribe(observe) {
     this._callsubscriber = observe;
   }
  }
- 
- 
-
- export default store;
+  export default store;
   
 window.state = store;
   
