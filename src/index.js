@@ -13,7 +13,9 @@ const StateContext = createContext();
 let rerenderEntireTree = (state) => {
   root.render(
     <React.StrictMode>
-      <App state={state} addPost={store.addPost.bind(store)} />
+      {/* <App state={state} addPost={store.addPost.bind(store)} /> */}
+      <App state={state} dispatch={store.dispatch.bind(store)} />
+
       {/* <StateContext.Provider value={state}>
           <App state={state}/>
       </StateContext.Provider> */}
@@ -31,3 +33,4 @@ store.subscribe(rerenderEntireTree);
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+// dispatch

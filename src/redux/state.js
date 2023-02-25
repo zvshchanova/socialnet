@@ -20,19 +20,19 @@
       ]
     }
   },
+  _callsubscriber() {
+    console.log("State was added")
+  },
   getState() {
     debugger;
     return this._state;
   },
-  _callsubscriber() {
-    console.log("State was added")
-  },
-  addPost(postMessage) {
+  _addPost(newText) {
     debugger;
     let newPost = {
       id: 5,
       // message: this._state.profilePage.newPostText,    
-      message: postMessage,   
+      message: newText,   
       likescount: 0
     };
     this._state.profilePage.postsData.push(newPost);
@@ -41,6 +41,11 @@
   },
   subscribe(observe) {
     this._callsubscriber = observe;
+  },
+  dispatch(action) {
+    if (action.type === 'ADD-POST'){
+      this._addPost(action.newText);
+    }
   }
  }
   export default store;
