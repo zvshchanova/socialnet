@@ -5,6 +5,7 @@ import Navbar from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import store from "./redux/state";
 
 
 function App(props) {
@@ -18,7 +19,7 @@ function App(props) {
       <Routes>
           <Route path='/' element={< Profile postsData={props.state.profilePage.postsData}/>} /> p
           <Route path="/profile" element={< Profile postsData={props.state.profilePage.postsData} dispatch={props.dispatch}/>} />
-          <Route path="/dialogs" element={< Dialogs dialogsData={props.state.dialogsPage.dialogsData} messagesData={props.state.dialogsPage.messagesData}/>} />      
+          <Route path="/dialogs" element={< Dialogs store={props.store} />} />      
       </Routes>
       </div>
       </div>
@@ -29,3 +30,4 @@ function App(props) {
 export default App;
 
 // useRoutes
+// dialogsData={props.state.dialogsPage.dialogsData} messagesData={props.state.dialogsPage.messagesData}

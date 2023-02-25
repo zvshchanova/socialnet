@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
+import {addPostActionCreator} from "../../../redux/state"
 
 const MyPosts =(props) =>{
 // const state = useContext(StateContext);
@@ -9,10 +10,12 @@ const MyPosts =(props) =>{
 
     let newPostElement = React.createRef();
 
+
+
     const addPost = () =>{
         let text = newPostElement.current.value;     
         // props.dispatch(text);  
-        props.dispatch({ type: 'ADD-POST', newText: text});
+        props.dispatch(addPostActionCreator(text));
         newPostElement.current.value ="";
         }
 
