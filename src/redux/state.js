@@ -1,6 +1,6 @@
- const ADD_POST = 'ADD-POST';
- const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
- const SEND_MESSAGE = 'SEND_MESSAGE';
+ import {profileReducer} from './profile-reducer';
+ import {dialogsReducer} from './dialogs-reducer';
+ import {sidebarReducer} from './sidebar-reducer';
 
  let store = {
   _state: {
@@ -23,7 +23,8 @@
         {id: 3, message: 'Yo!'},
       ],
       newMessageBody: ""
-    }
+    },
+    sidebar: {}
   },
   _callsubscriber() {
     console.log("State was added")
@@ -32,46 +33,18 @@
     debugger;
     return this._state;
   },
-  _addPost(newText) {
-    debugger;
-    let newPost = {
-      id: 5,
-      // message: this._state.profilePage.newPostText,    
-      message: newText,   
-      likescount: 0
-    };
-    this._state.profilePage.postsData.push(newPost);
-    // this._state.profilePage.newPostText = '';
-    this._callsubscriber(this._state)
-  },
+
   subscribe(observe) {
     this._callsubscriber = observe;
   },
   dispatch(action) {
-    if (action.type === ADD_POST){
-      this._addPost(action.newText);
-    } else
-    if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      this._state.dialogsPage.newMessageBody = action.body;
-      this._callsubscriber(this._state)
-    }else
-    if (action.type === SEND_MESSAGE) {
-      let body = this._state.dialogsPage.newMessageBody;
-      this._state.dialogsPage.newMessageBody = "";
-      this._state.dialogsPage.messagesData.push({id: 4, message: body})
-      this._callsubscriber(this._state)
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._state.sidebar = sidebarReducer(this._state.sidebar, action)
+    this._callsubscriber(this._state)
+
   }
-
-
  }
- export const addPostActionCreator = (text) => ({ type: ADD_POST, newText: text});
-
- export const sendMessageCreator = () => ({ type: SEND_MESSAGE });
-
- export const updateNewMessageBodyCreator = (text) => 
- ({type: UPDATE_NEW_MESSAGE_BODY, body: text});
-
   export default store;
   
 window.state = store;
