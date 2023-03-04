@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
-import {addPostActionCreator} from "../../../redux/profile-reducer"
 
 const MyPosts =(props) =>{
     
@@ -29,9 +28,7 @@ const MyPosts =(props) =>{
                 <div className={style.posts}>
                     { postsItems }
                 </div>
-
             </div>
-
     )
 }
 export default MyPosts;
