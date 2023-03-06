@@ -1,6 +1,4 @@
-import React, { useContext } from 'react';
-import style from './MyPosts.module.css';
-import Post from './Post/Post';
+import React from 'react';
 import {addPostActionCreator} from "../../../redux/profile-reducer"
 import MyPosts from './MyPosts';
 import { connect } from "react-redux";

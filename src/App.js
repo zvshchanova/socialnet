@@ -5,7 +5,7 @@ import Navbar from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
 import DialogsConteiner from './components/Dialogs/DialogsConteiner';
 import { Routes, Route} from 'react-router-dom';
-// import store from "./redux/store";
+import UsersConteiner from './components/Users/UsersConteiner'
 
 
 function App() {
@@ -19,7 +19,8 @@ function App() {
       <Routes>
           <Route path='/' element={< Profile /> } />
           <Route path="/profile" element={< Profile /> } />
-          <Route path="/dialogs" element={< DialogsConteiner />} />      
+          <Route path="/dialogs" element={< DialogsConteiner />} />  
+          <Route path="/users" element={< UsersConteiner />} />  
       </Routes>
       </div>
       </div>
