@@ -1,6 +1,7 @@
 .header {
     grid-area: header;
     background-color: #282c34;
+    height: 20vmin;
   }
   .img {
     height: 15vmin;
