@@ -12,7 +12,7 @@ let reducers = combineReducers({
     usersPage: usersReducer
 }
 )
-const store = createStore(reducers);
-// window.store = store;
+let store = createStore(reducers);
+window.store = store;   //  We can check in any place in console  store.getState()
 
 export default store;
