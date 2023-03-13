@@ -15,11 +15,10 @@ class ProfileContainer extends React.Component{
         // const path = location.pathname;
         let userId;   // пока хардкодим
         if(!userId) {
-            userId = "2";
+            userId = "28349";
         }
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/`+  userId)
-        .then(response => {
-            debugger
+        .then(response => {            
         this.props.setUserProfile(response.data);
         })
 

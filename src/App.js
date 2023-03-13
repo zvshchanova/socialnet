@@ -1,6 +1,6 @@
 import React, { useContext }  from "react";
 import './App.css';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Nav/Nav';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsConteiner from './components/Dialogs/DialogsConteiner';
@@ -12,7 +12,7 @@ function App() {
   return (
   // <BrowserRouter>
     <div className="App-wrapper">
-      <Header />
+      <HeaderContainer />
       <Navbar />
       <div className='App-wrapper-content'>
       
