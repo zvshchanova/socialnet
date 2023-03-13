@@ -32,7 +32,6 @@ class UsersContainer extends React.Component {
     render() {
        return <>
        { this.props.isFetching ? <Preloader/> : null }
-       {/* { this.props.isFetching ? <img  src={preloader}/> : null } */}
        <Users totalUsersCount = { this.props.totalUsersCount} 
        pageSize = { this.props.pageSize} 
        currentPage = { this.props.currentPage} 
@@ -55,28 +54,6 @@ const mapStateToProps = (state) => {
     }
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId))
-//          },
-//          unfollow: (userId) => {
-//             dispatch(unfollowAC(userId))
-//          },
-//          setUsers: (users) => {
-//             dispatch(setUsersAC(users))
-//          },
-//          setCurrentPage: (pageNumber) => {
-//             dispatch(setCurrentPageAC(pageNumber))
-//          },
-//          setUsersTotalCount: (totalCount) => {
-//             dispatch(setUsersTotalCountAC(totalCount))
-//          },
-//          toggleisFetching: (isFetching) => {
-//             dispatch(toggleisFetchingAC(isFetching))
-//          },
-//     }
-// }
 
 const UsersConteiner = connect(mapStateToProps , {follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, toggleisFetching })(UsersContainer)
 export default UsersConteiner;
