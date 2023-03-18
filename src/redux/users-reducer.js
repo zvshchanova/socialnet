@@ -1,3 +1,4 @@
+import {usersAPI} from '../api/api';
 const UNFOLLOW = 'UNFOLLOW';
 const FOLLOW = 'FOLLOW'; 
 const SET_USERS = 'SET_USERS';
@@ -64,10 +65,46 @@ export const usersReducer = (state = initialState, action) => {
     }
 };
 
-export const follow = (userId) => ({ type: FOLLOW, userId });
-export const unfollow = (userId) => ({ type: UNFOLLOW, userId });
+export const followSuccess = (userId) => ({ type: FOLLOW, userId });
+export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
 export const setUsersTotalCount = (totalUsersCount) => ({ type: SET_TOTAL_USER_COUNT, count: totalUsersCount });
 export const toggleisFetching = (isFetching) => ({ type: TOGGLE_ISFETCHING, isFetching });
 export const toggleisFollowInProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOW_PROGRESS, isFetching, userId });
+
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleisFetching(true));
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(toggleisFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setUsersTotalCount(data.totalCount))
+        })
+    }
+}
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleisFollowInProgress(true, userId));
+        usersAPI.follow(userId)
+        .then(responce => {
+            if(responce.data.resultCode ===0){
+                dispatch(followSuccess(userId)); 
+            }
+            dispatch(toggleisFollowInProgress(false, userId));
+        });
+    }
+}
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleisFollowInProgress(true, userId));
+        usersAPI.unfollow(userId)
+        .then(responce => {
+            if(responce.data.resultCode ===0){
+                dispatch(unfollowSuccess(userId)); 
+            }
+            dispatch(toggleisFollowInProgress(false, userId));
+        });
+    }
+}
