@@ -32,10 +32,34 @@ let initialState = {
 }
 export const addPostActionCreator = (text) => ({ type: ADD_POST, newText: text});
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile});
-export const getUserProfile = (userId) => (dispatch) => {
+debugger
+// export const getUserProfile = (userId) => (dispatch) => {
+//   usersAPI.getProfile(userId)
+//   .then(response => {            
+//     dispatch(setUserProfile(response.data));
+//   })
+// } 
+export const getUserProfile = (userId) => {
+
+  return (dispatch) => {
+    debugger;
   usersAPI.getProfile(userId)
   .then(response => {            
     dispatch(setUserProfile(response.data));
   })
 } 
+}
+
 // ({ type: SET_USER_PROFILE, profile});
+// export const unfollow = (userId) => {
+//   return (dispatch) => {
+//       dispatch(toggleisFollowInProgress(true, userId));
+//       usersAPI.unfollow(userId)
+//       .then(responce => {
+//           if(responce.data.resultCode ===0){
+//               dispatch(unfollowSuccess(userId)); 
+//           }
+//           dispatch(toggleisFollowInProgress(false, userId));
+//       });
+//   }
+// }
