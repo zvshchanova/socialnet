@@ -22,7 +22,7 @@ const Dialogs = (props) => {
         props.updateNewMessageBody(body);
     }
 
-    // if(!props.isAuth) return <Link to={'./login'}/>   //!!!  Redirect
+//    if(!props.isAuth) return <Link to={'./login'}/>   //!!!  Redirect
 
     return (
         <div className={style.dialogs}>

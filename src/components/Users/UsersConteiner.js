@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import { follow, unfollow,  setCurrentPage, toggleisFollowInProgress, getUsers } from '../../redux/users-reducer';
 import Users from "./Users";
 import Preloader from '../common/Preloader/Preloader';
+import {withAuthRedirect} from '../../hoc/withAuthRedirect' 
 
-class UsersContainer extends React.Component {
- 
+
+class UsersContainer extends React.Component { 
     componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
@@ -41,9 +42,16 @@ const mapStateToProps = (state) => {
     }
 };
 
+// let AuthRedirectComponent = withAuthRedirect(UsersContainer)
 
-const UsersConteiner = connect(mapStateToProps , {
-    follow, unfollow, setCurrentPage, 
-    toggleisFollowInProgress, getUsers })(UsersContainer)
-export default UsersConteiner;
+
+// const UsersConteiner = connect(mapStateToProps , {
+//     follow, unfollow, setCurrentPage, 
+//     toggleisFollowInProgress, getUsers })(UsersContainer)
+
+// export default connect(mapStateToProps , {follow, unfollow, setCurrentPage, toggleisFollowInProgress, getUsers })(UsersContainer)
+// export default connect(mapStateToProps , {follow, unfollow, setCurrentPage, toggleisFollowInProgress, getUsers })(AuthRedirectComponent)
+
+export default withAuthRedirect(connect(mapStateToProps , {follow, unfollow, setCurrentPage, toggleisFollowInProgress, getUsers })
+                (UsersContainer))
 
