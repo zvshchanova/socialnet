@@ -3,9 +3,8 @@ import style from './ProfileInfo.module.css';
 import ProfileStatus from './ProfileStatus'
 
 const ProfileInfo =(props) =>{
-    debugger;
     if(!props.profile ) {
-        // return <Preloader/>
+         return <Preloader/>
     }
     return(
         <div>
@@ -16,7 +15,8 @@ const ProfileInfo =(props) =>{
         </div> */}
         <div>
         {props.profile &&  (<img src={props.profile.photos.small}/>)}
-        <ProfileStatus status={"Testing"}/>
+        <p>{props.profile.fullName}</p>
+        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
         </div>
         </div>
     )

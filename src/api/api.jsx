@@ -22,12 +22,22 @@ export const usersAPI = {
         return instance.delete(`follow/${userID}`)
     },
     getProfile (userId) {
-        return instance.get(`profile/`+  userId);
-        // .then(response => {            
-        // this.props.setUserProfile(response.data);
-        // })
+        console.warn('Obsolete method. Use profileAPI')
+        return profileAPI.getProfile(userId)  // чтобы не переписывать старые 
     }
 }
+export const profileAPI = {
+    // https://social-network.samuraijs.com/api/1.0/profile/status/2  - пример
+    getProfile (userId) {
+        return instance.get(`profile/`+  userId);
+    },
+    getStatus (userId) {
+        return instance.get(`profile/status/`+  userId);
+    },
+    updateStatus (status) {
+        return instance.put(`profile/status`, { status });
+    }
+};
 
 export const authAPI = {
     me() {

@@ -30,7 +30,6 @@
     console.log("State was added")
   },
   getState() {
-    debugger;
     return this._state;
   },
 
