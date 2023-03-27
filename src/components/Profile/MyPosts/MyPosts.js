@@ -2,8 +2,10 @@ import React, { useContext } from 'react';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
 import { Field, reduxForm } from "redux-form";
+import { required, maxLengthCreator } from '../../../utils/validation/validator';
+import { TextArea } from '../../common/FormControls/FormsControl'
 
-
+let maxLength8 = maxLengthCreator(8);
 const MyPosts =(props) =>{    
     let postsItems = props.posts.map( el => <Post id={el.id} message={el.message} likescount={el.likescount} key={el.id}/>);
     let newPostElement = React.createRef();
@@ -29,8 +31,7 @@ let AddNewPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
                     <div>
-                    {/* <textarea ref={newPostElement}/> */}
-                    <Field name= "newPostText" component="textarea"/>
+                    <Field name= "newPostText" component={TextArea} validate={[required, maxLength8]} placeholder="message"/>
                     </div>
                     <div>
                     <button >Add post</button>                    
