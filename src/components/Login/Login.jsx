@@ -2,6 +2,8 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { Input } from '../../components/common/FormControls/FormsControl'
 import { required, maxLengthCreator } from '../../utils/validation/validator';
+import { login } from '../../redux/auth-reducer';
+import { connect } from "react-redux"; 
 
 // store.getState().form
 
@@ -12,12 +14,12 @@ const LoginForm = (props) =>{
         <div>
             <Field component={Input}
                 validate={[required]}
-                placeholder={"Login"} name={"login"} />
+                placeholder={"Email"} name={"email"} />
         </div>
         <div>
             <Field component={Input}
                 validate={[required]}
-                placeholder={"Password"} name={"password"} />
+                placeholder={"Password"} name={"password"} type="password"/>
         </div>
         <div>
             <Field component={"input"} name={"rememberMe"} type={"checkbox"}/> remember me
@@ -33,12 +35,17 @@ const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 const Login = (props) =>{
     const onSubmit = (formData) => {
-        console.log(formData)
+        props.login(formData.email, formData.password, formData.rememberMe)
+    }
+    if (props.isAuth) {
+        alert('return <Redirect to={"/profile"}/>')
     }
     return <div> 
     <h1>LOGIN</h1>
     <LoginReduxForm onSubmit={onSubmit}/>
     </div>
 }
-
-export default Login;
+const mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth       //  redux-store :  "auth: authReducer,"
+})
+export default connect(mapStateToProps, {login}) (Login);           // HOC connect   login - thankcreator
