@@ -4,6 +4,7 @@ import { Input } from '../../components/common/FormControls/FormsControl'
 import { required, maxLengthCreator } from '../../utils/validation/validator';
 import { login } from '../../redux/auth-reducer';
 import { connect } from "react-redux"; 
+import style from '../../components/common/FormControls/FormsControl.module.css'
 
 // store.getState().form
 
@@ -24,6 +25,9 @@ const LoginForm = (props) =>{
         <div>
             <Field component={"input"} name={"rememberMe"} type={"checkbox"}/> remember me
         </div>
+        {props.error && <div className={style.formSummaryError}>
+            {props.error}
+        </div>}
         <div>
             <button>Login</button>
         </div>

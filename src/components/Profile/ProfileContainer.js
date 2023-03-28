@@ -10,10 +10,12 @@ class ProfileContainer extends React.Component{
         // Нужен хук  useLocation только в функциональной компоненте !!!
         // const location = useLocation();
         // const path = location.pathname;
-        let userId;   // пока хардкодим
+        // let userId = this.props.match.params.userId;
+        let userId;
+        debugger
         if(!userId) {
-             userId = "28349";
-            // userId = "2";
+            userId = this.props.authUserId;
+            userId = "28349";
         }
         this.props.getUserProfile(userId);
         this.props.getStatus(userId)
@@ -27,7 +29,9 @@ class ProfileContainer extends React.Component{
 
 let mapStateToProps = (state) => ({ 
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    authUserId: state.auth.userId,
+    isAuth: state.auth.isAuth
 });
 
  let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
