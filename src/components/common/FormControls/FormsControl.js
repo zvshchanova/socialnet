@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './FormsControl.module.css'
 
-const FormControl = ({input, meta, child,...props}) => {     // REST operator  изучить
+const FormControl = ({input, meta, children,...props}) => {     // REST operator  изучить
     const hasError = meta.touched && meta.error ;
     return (
         <div className={styles.formControl + " " + (hasError ? styles.error : "")}>
@@ -14,13 +14,13 @@ const FormControl = ({input, meta, child,...props}) => {     // REST operator  �
 }
 
 export const TextArea = (props) => {   
-    const {input, meta, child,...restprops} = props;
+    const {input, meta, children,...restprops} = props;
     return (
         <FormControl {...props}><textarea {...input} {...restprops}/></FormControl>
     )
 }
 export const Input = (props) => {   
-    const {input, meta, child,...restprops} = props;
+    const {input, meta, children,...restprops} = props;
     return (
         <FormControl {...props}><input {...input} {...restprops}/></FormControl>
     )

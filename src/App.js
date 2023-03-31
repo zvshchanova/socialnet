@@ -1,16 +1,27 @@
-import React, { useContext }  from "react";
+import React, { Component, useContext }  from "react";
 import './App.css';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Nav/Nav';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsConteiner from './components/Dialogs/DialogsConteiner';
 import { Routes, Route} from 'react-router-dom';
-import UsersConteiner from './components/Users/UsersConteiner'
-import LoginPage from './components/Login/Login'
+import UsersConteiner from './components/Users/UsersConteiner';
+import LoginPage from './components/Login/Login';
+import { connect } from "react-redux"; 
+import { initialiseApp } from './redux/app-reducer';
+import { compose } from "redux";
+import Preloader from "./components/common/Preloader/Preloader";
 
+class App extends Component {
+  componentDidMount() {       
+    this.props.initialiseApp(); 
+}
 
-
-function App() {
+  render() {
+    debugger
+  if (!this.props.initialised) {   //  должно работать урок 80  
+  //return <Preloader />      
+  }
   return (
   // <BrowserRouter>
     <div className="App-wrapper">
@@ -32,5 +43,12 @@ function App() {
 
  );
 }
-export default App;
+}
+const mapStateToProps = (state) => ({
+  initialised: state.app.initialised
+})
+
+// export default App;
+export default compose(connect(mapStateToProps, {initialiseApp}))(App)
+//withRouter
 
