@@ -40,7 +40,7 @@ const AddMessageForm = (props) => {
     <form onSubmit={props.handleSubmit}>
     <div >
         <Field component={TextArea} 
-            validate={[required, maxLength50]} 
+             validate={[required, maxLength50]} 
             placeholder={"Enter your message"} name="newMessageBody" />
     </div>        
     <div>

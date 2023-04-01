@@ -8,7 +8,6 @@ let initialState = {
     };
 
 export const appReducer = (state = initialState, action) => {
-    debugger;
     switch (action.type) {
         case INITIALISED_SUCCESS:
             return {...state, initialised: true}        
@@ -21,7 +20,6 @@ export const initialisedSuccess = () => ({ type: INITIALISED_SUCCESS });
 
 export const initialiseApp = () => (dispatch) => {    // redux-thunk
     let promise = dispatch(getAuthUserData());
-    debugger
     // dispatch(somethingelse())
     promise.then(() => {
         dispatch(initialisedSuccess())

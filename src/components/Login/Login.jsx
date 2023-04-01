@@ -4,12 +4,12 @@ import { Input } from '../../components/common/FormControls/FormsControl'
 import { required, maxLengthCreator } from '../../utils/validation/validator';
 import { login } from '../../redux/auth-reducer';
 import { connect } from "react-redux"; 
-import style from '../../components/common/FormControls/FormsControl.module.css'
+import style from '../../components/common/FormControls/FormsControl.module.css';
+import { Navigate } from "react-router-dom";
 
 // store.getState().form
 
 const LoginForm = (props) =>{
-
     return (    
     <form onSubmit={props.handleSubmit}>
         <div>
@@ -42,7 +42,10 @@ const Login = (props) =>{
         props.login(formData.email, formData.password, formData.rememberMe)
     }
     if (props.isAuth) {
-        alert('return <Redirect to={"/profile"}/>')
+        // alert('Login props.isAuth return <Redirect to={"/profile"}/>')
+        // return  redirect("/profile")    
+        return <Navigate to="/profile" />      
+
     }
     return <div> 
     <h1>LOGIN</h1>

@@ -13,7 +13,7 @@ let initialState = {
   };
 
   export const profileReducer = (state = initialState, action) => {
-    debugger
+
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
@@ -33,6 +33,7 @@ let initialState = {
         case SET_USER_PROFILE: 
           return {...state, profile: action.profile}
         default:
+        //  debugger
             return state;
     }
 }
@@ -53,7 +54,6 @@ export const getStatus = (userId) => {
   return (dispatch) => {    
   profileAPI.getStatus(userId)
   .then(response => {  
-    debugger;          
     dispatch(setStatus(response.data));
   })
 } 

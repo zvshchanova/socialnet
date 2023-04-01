@@ -4,7 +4,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Nav/Nav';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsConteiner from './components/Dialogs/DialogsConteiner';
-import { Routes, Route} from 'react-router-dom';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import UsersConteiner from './components/Users/UsersConteiner';
 import LoginPage from './components/Login/Login';
 import { connect } from "react-redux"; 
@@ -18,12 +18,11 @@ class App extends Component {
 }
 
   render() {
-    debugger
   if (!this.props.initialised) {   //  должно работать урок 80  
   //return <Preloader />      
   }
   return (
-  // <BrowserRouter>
+  //  <BrowserRouter>
     <div className="App-wrapper">
       <HeaderContainer />
       <Navbar />
@@ -39,7 +38,7 @@ class App extends Component {
       </Routes>
       </div>
       </div>
-  //  </BrowserRouter>
+    // </BrowserRouter>
 
  );
 }

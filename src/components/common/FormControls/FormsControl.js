@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './FormsControl.module.css'
+import style from './FormsControl.module.css'
 
-const FormControl = ({input, meta, children,...props}) => {     // REST operator  изучить
+const FormControl = ({input, meta, child,...props}) => {     // REST operator  изучить
     const hasError = meta.touched && meta.error ;
     return (
-        <div className={styles.formControl + " " + (hasError ? styles.error : "")}>
+        <div className={style.formControl + " " + (hasError ? style.error : "")}>
             <div>
                 {props.children}        
             </div>
@@ -14,38 +14,14 @@ const FormControl = ({input, meta, children,...props}) => {     // REST operator
 }
 
 export const TextArea = (props) => {   
-    const {input, meta, children,...restprops} = props;
+    const {input, meta, child,...restprops} = props;
     return (
         <FormControl {...props}><textarea {...input} {...restprops}/></FormControl>
     )
 }
-export const Input = (props) => {   
-    const {input, meta, children,...restprops} = props;
+export const Input = (props) => {  
+    const {input, meta, child,...restprops} = props;
     return (
         <FormControl {...props}><input {...input} {...restprops}/></FormControl>
     )
 }
-// Refactoring:
-// export const TextArea = ({input, meta, ...props}) => {   // все кроме input и meta      // REST operator  изучить
-//     const hasError = meta.touched && meta.error ;
-//     return (
-//         <div className={styles.formControl + " " + (hasError ? styles.error : "")}>
-//             <div>
-//             <textarea {...input} {...props}/>        
-//             </div>
-//             { hasError && <span>{meta.error}</span>}
-//         </div>
-//     )
-// }
-
-// export const Input = ({input, meta, ...props}) => {   
-//     const hasError = meta.touched && meta.error ;
-//     return (
-//         <div className={styles.formControl + " " + (hasError ? styles.error : "")}>
-//             <div>
-//             <textarea {...input} {...props}/>        
-//             </div>
-//             { hasError && <span>{meta.error}</span>}
-//         </div>
-//     )
-// }
