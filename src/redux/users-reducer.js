@@ -51,8 +51,6 @@ export const usersReducer = (state = initialState, action) => {
             return {...state,  currentPage: action.currentPage}
         case SET_TOTAL_USER_COUNT:
             return {...state,  totalUsersCount: action.count}
-        case SET_TOTAL_USER_COUNT:
-                return {...state,  totalUsersCount: action.count}
         case TOGGLE_ISFETCHING:
             return {...state,  isFetching: action.isFetching}
         case TOGGLE_IS_FOLLOW_PROGRESS:
@@ -73,7 +71,7 @@ export const setUsersTotalCount = (totalUsersCount) => ({ type: SET_TOTAL_USER_C
 export const toggleisFetching = (isFetching) => ({ type: TOGGLE_ISFETCHING, isFetching });
 export const toggleisFollowInProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOW_PROGRESS, isFetching, userId });
 
-export const getUsers = (page, pageSize) => {
+export const requestUsers = (page, pageSize) => {
     return (dispatch) => {
         dispatch(toggleisFetching(true));
         dispatch(setCurrentPage(page));
