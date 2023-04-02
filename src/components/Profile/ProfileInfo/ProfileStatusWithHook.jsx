@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import style from './ProfileInfo.module.css';
+import React, {useState, useEffect} from 'react';
 
 const ProfileStatusWithHook = (props) =>{    
 const [editMode, setEditMode] = useState(false);
@@ -15,6 +14,10 @@ const deactivateEditMode = () =>{
 const onStatusChange = (e) => {
     setStatus(e.currentTarget.value);        
 }
+useEffect( () => {
+    setStatus(props.status)
+},[props.status]);
+
     return(
         <>
         <h2>ProfileStatus:</h2>
