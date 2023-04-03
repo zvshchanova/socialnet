@@ -6,9 +6,9 @@ import { required, maxLengthCreator } from '../../../utils/validation/validator'
 import { TextArea } from '../../common/FormControls/FormsControl'
 
 let maxLength8 = maxLengthCreator(8);
-const MyPosts =(props) =>{    
+const MyPosts = React.memo(props => {    
     let postsItems = props.posts.map( el => <Post id={el.id} message={el.message} likescount={el.likescount} key={el.id}/>);
-    let newPostElement = React.createRef();
+    // let newPostElement = React.createRef();
 
     const onAddPost = (values) =>{
         props.addPost(values.newPostText);
@@ -26,7 +26,7 @@ const MyPosts =(props) =>{
                 </div>
             </div>
     )
-}
+});
 let AddNewPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
