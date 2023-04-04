@@ -13,7 +13,7 @@ const Dialogs = (props) => {
     let dialogsItems = state.dialogsData.map( dialog => <DialogItem name={dialog.name} id={dialog.id} key={dialog.id} />);
     let messageItems = state.messagesData.map( el => <Message message={el.message} id={el.id} key={el.id}/>)
     
-    let newMessageBody = state.newMessageBody;
+ //   let newMessageBody = state.newMessageBody;
 
 //    if(!props.isAuth) return <Link to={'./login'}/>   //!!!  Redirect
 

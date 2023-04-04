@@ -1,12 +1,14 @@
 import axios from "axios";
 
 const instance = axios.create({
-    withCredentials: true,
+     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
     header: {
         "API-KEY": "ed94ad15-172f-4d17-b32f-ceea6446071a"
     }
 });
+
+// import {instance} from '../App';
 
 export const usersAPI = {
     getUsers(currentPage, pageSize) {

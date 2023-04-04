@@ -13,7 +13,7 @@ let Users = (props) => {
     return <div>
     <div>
         {pages.map(p => {
-        return  <span onClick={() => { props. onPageChanged(p);}}  className={props.currentPage === p ? styles.selectPage : undefined}  style={{"cursor": "pointer"}}>{p}</span>
+        return  <span onClick={() => { props.onPageChanged(p)}}  className={props.currentPage === p ? styles.selectPage : undefined}  style={{"cursor": "pointer"}}>{p}</span>
         })}
 
     </div>
@@ -22,7 +22,7 @@ let Users = (props) => {
         <div key={u.id}>
             <div>
                 <NavLink to={'/profile/'+ u.id}>
-                <img src={u.photos.small != null ? u.photos.small : userPhoto} className={styles.userPhoto}/>
+                <img src={u.photos.small != null ? u.photos.small : userPhoto} className={styles.userPhoto} alt="prof"/>
                 </NavLink>
             </div>
             <div>

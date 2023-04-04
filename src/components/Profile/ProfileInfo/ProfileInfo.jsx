@@ -13,7 +13,7 @@ const ProfileInfo =(props) =>{
         alt="image"></img>
         </div> */}
         <div>
-        {props.profile &&  (<img src={props.profile.photos.small} alt="profile-photo"/>)}
+        {props.profile &&  (<img src={props.profile.photos.small} alt="profile"/>)}
         <p>{props.profile.fullName}</p>
         <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus}/>
         </div>

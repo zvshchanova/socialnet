@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import style from './MyPosts.module.css';
 import Post from './Post/Post';
 import { Field, reduxForm } from "redux-form";
@@ -7,7 +7,10 @@ import { TextArea } from '../../common/FormControls/FormsControl'
 
 let maxLength8 = maxLengthCreator(8);
 const MyPosts = React.memo(props => {    
-    let postsItems = props.posts.map( el => <Post id={el.id} message={el.message} likescount={el.likescount} key={el.id}/>);
+    let postsItems = 
+    [...props.posts]
+    .reverse()
+    .map( el => <Post id={el.id} message={el.message} likescount={el.likescount} key={el.id}/>);
     // let newPostElement = React.createRef();
 
     const onAddPost = (values) =>{

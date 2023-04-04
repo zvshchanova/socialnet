@@ -11,6 +11,15 @@ import { connect } from "react-redux";
 import { initialiseApp } from './redux/app-reducer';
 import { compose } from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
+// import axios from "axios";
+
+// export const instance = axios.create({
+//      withCredentials: true,
+//     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+//     header: {
+//         "API-KEY": "ed94ad15-172f-4d17-b32f-ceea6446071a"
+//     }
+// });
 
 class App extends Component {
   componentDidMount() {       
@@ -19,7 +28,7 @@ class App extends Component {
 
   render() {
   if (!this.props.initialised) {   //  должно работать урок 80  
-  //return <Preloader />      
+  return <Preloader />      
   }
   return (
   //  <BrowserRouter>
