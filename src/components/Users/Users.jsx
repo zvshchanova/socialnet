@@ -13,7 +13,6 @@ const Users = (props) => {
                     follow={props.follow}/>)
     }    
     </div>
-    </div>
 }
 
 export default Users

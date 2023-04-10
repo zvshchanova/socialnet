@@ -3,7 +3,7 @@ import Preloader from '../../common/Preloader/Preloader';
 // import style from './ProfileInfo.module.css';
 import ProfileStatusWithHook from './ProfileStatusWithHook'
 
-const ProfileInfo =(profile, status) =>{    
+const ProfileInfo =(profile, status, updateStatus) =>{    
     if(!profile ) {return <Preloader/>}
     return(
         <div>

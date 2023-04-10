@@ -43,9 +43,6 @@ const mapStateToProps = (state) => ({
 })
 
 // export default App;
-export default compose(
-  // withRouter,
-  connect(mapStateToProps, {initialiseApp}))(App)
 
 export default compose(
   // withRouter,
