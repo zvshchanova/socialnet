@@ -4,7 +4,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Nav/Nav';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsConteiner from './components/Dialogs/DialogsConteiner';
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import UsersConteiner from './components/Users/UsersConteiner';
 import LoginPage from './components/Login/Login';
 import { connect } from "react-redux"; 
@@ -16,7 +16,6 @@ class App extends Component {
   componentDidMount() {       
     this.props.initialiseApp(); 
 }
-
   render() {
   if (!this.props.initialised) {   //  должно работать урок 80  
   return <Preloader />      
@@ -44,8 +43,9 @@ const mapStateToProps = (state) => ({
 })
 
 // export default App;
-//export default compose(connect(mapStateToProps, {initialiseApp}))(App)
-//withRouter
+export default compose(
+  // withRouter,
+  connect(mapStateToProps, {initialiseApp}))(App)
 
 export default compose(
   // withRouter,
