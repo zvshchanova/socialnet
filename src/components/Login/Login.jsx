@@ -9,9 +9,9 @@ import { Navigate } from "react-router-dom";
 
 // store.getState().form
 
-const LoginForm = (handleSubmit, error) =>{
+const LoginForm = (props) =>{
     return (    
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={props.handleSubmit}>
         <div>
             <Field component={Input}
                 validate={[required]}
@@ -25,8 +25,8 @@ const LoginForm = (handleSubmit, error) =>{
         <div>
             <Field component={"input"} name={"rememberMe"} type={"checkbox"}/> remember me
         </div>
-        {error && <div className={style.formSummaryError}>
-            {error}
+        {props.error && <div className={style.formSummaryError}>
+            {props.error}
         </div>}
         <div>
             <button>Login</button>
@@ -37,12 +37,13 @@ const LoginForm = (handleSubmit, error) =>{
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
-const Login = (login,isAuth) =>{
+const Login = (props) =>{
     const onSubmit = (formData) => {
-        login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe)
     }
-    if (isAuth) {
-        return <Navigate to="/profile" />    
+    if (props.isAuth) { 
+        return <Navigate to="/profile" />      
+
     }
     return <div> 
     <h1>LOGIN</h1>
