@@ -3,16 +3,20 @@ import Preloader from '../../common/Preloader/Preloader';
 // import style from './ProfileInfo.module.css';
 import ProfileStatusWithHook from './ProfileStatusWithHook'
 
-const ProfileInfo =(profile, status, updateStatus) =>{    
-    if(!profile ) {return <Preloader/>}
+const ProfileInfo =(props) =>{    
+    if(!props.profile ) {return <Preloader/>}
     return(
         <div>
-           <h2>ProfileInfo:</h2>
-            <div>
-                {profile &&  (<img src={profile.photos.small} alt="profile"/>)}
-                <p>{profile.fullName}</p>
-                <ProfileStatusWithHook status={status} updateStatus={updateStatus}/>
-            </div>
+        <h2>ProfileInfo:</h2>
+        {/* <div>
+        <img className={style.img} src="https://images.pexels.com/photos/635279/pexels-photo-635279.jpeg" 
+        alt="image"></img>
+        </div> */}
+        <div>
+        {props.profile &&  (<img src={props.profile.photos.small} alt="profile"/>)}
+        <p>{props.profile.fullName}</p>
+        <ProfileStatusWithHook status={props.status} updateStatus={props.updateStatus}/>
+        </div>
         </div>
     )
 }
