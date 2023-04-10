@@ -4,7 +4,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Nav/Nav';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import DialogsConteiner from './components/Dialogs/DialogsConteiner';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 import UsersConteiner from './components/Users/UsersConteiner';
 import LoginPage from './components/Login/Login';
 import { connect } from "react-redux"; 
@@ -12,20 +12,21 @@ import { initialiseApp } from './redux/app-reducer';
 import { compose } from "redux";
 import Preloader from "./components/common/Preloader/Preloader";
 
+
 class App extends Component {
   componentDidMount() {       
     this.props.initialiseApp(); 
 }
-
   render() {
   if (!this.props.initialised) {   //  должно работать урок 80  
   return <Preloader />      
   }
-  return (  
+  return (
     <div className="App-wrapper">
       <HeaderContainer />
       <Navbar />
-      <div className='App-wrapper-content'>      
+      <div className='App-wrapper-content'>
+      
       <Routes>
           <Route path='/' element={< ProfileContainer /> } />
           {/* <Route path="/profile" element={< ProfileContainer /> } /> */}
@@ -36,7 +37,6 @@ class App extends Component {
       </Routes>
       </div>
       </div>
-
  );
 }
 }
@@ -45,7 +45,6 @@ const mapStateToProps = (state) => ({
 })
 
 // export default App;
-
 export default compose(
   // withRouter,
   connect(mapStateToProps, {initialiseApp}))(App)

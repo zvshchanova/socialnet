@@ -24,7 +24,6 @@ let reducers = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(applyMiddleware(ThunkMiddleware)));
-
 window._store_ = store;   //  We can check in any place in console  store.getState()
 
 export default store;
