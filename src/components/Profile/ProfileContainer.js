@@ -16,7 +16,6 @@ class ProfileContainer extends React.Component{
         if(!userId) {
             userId = this.props.authUserId;  // должно прийити из me но у меня не работает  // не приходят все  // isAuth: undefined  должен быть false
             if (!userId) {
-                //debugger;
                 //this.props.history.push("/login")  // у меня нет this.props.history
             }
             userId = "28349";
