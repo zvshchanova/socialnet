@@ -42,10 +42,7 @@ const Login = (login,isAuth) =>{
         login(formData.email, formData.password, formData.rememberMe)
     }
     if (isAuth) {
-        // alert('Login props.isAuth return <Redirect to={"/profile"}/>')
-        // return  redirect("/profile")    
-        return <Navigate to="/profile" />      
-
+        return <Navigate to="/profile" />    
     }
     return <div> 
     <h1>LOGIN</h1>
