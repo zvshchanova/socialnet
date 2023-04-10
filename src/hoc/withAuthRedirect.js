@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 
 let mapStateToPropsRedirect = (state) => ({ 
     isAuth: state.auth.isAuth
+    // login: state.auth.login
 });
 
 export const withAuthRedirect = (Component) => {

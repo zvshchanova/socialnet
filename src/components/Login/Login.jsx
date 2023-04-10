@@ -51,6 +51,8 @@ const Login = (props) =>{
     </div>
 }
 const mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth       //  redux-store :  "auth: authReducer,"
+    isAuth: state.auth.isAuth,       //  redux-store :  "auth: authReducer,"
+    login: state.auth.login
+
 })
 export default connect(mapStateToProps, {login}) (Login);           // HOC connect   login - thankcreator

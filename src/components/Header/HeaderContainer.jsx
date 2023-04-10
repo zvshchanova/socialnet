@@ -21,5 +21,6 @@ const mapStateToProps = (state) => {
 }
 };
 
-// export default connect(mapStateToProps, {getAuthUserData, logout})(HeaderContainer)
+ //export default connect(mapStateToProps, {getAuthUserData, logout})(HeaderContainer)
+
 export default connect(mapStateToProps, {logout})(HeaderContainer)

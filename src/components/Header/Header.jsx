@@ -5,7 +5,6 @@ import style from './Header.module.css'
 import { NavLink } from 'react-router-dom';
 
 const Header =(props) =>{
-    debugger
     return(
     <div className = {style.header}>
     <img src={logo} className = {style.img} alt="logo" />
