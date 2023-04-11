@@ -2,7 +2,7 @@ import React from 'react';
 import style from './FormsControl.module.css'
 
 const FormControl = ({input, meta:{touched, error}, children}) => {     // REST operator  изучить
-    debugger;
+    // debugger;
     const hasError = touched && error ;
     return (
         <div className={style.formControl + " " + (hasError ? style.error : "")}>
