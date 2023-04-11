@@ -3,7 +3,6 @@ import styles from './Paginator.module.css';
 import { useState } from 'react';
 
 const Paginator = ({ onPageChanged, currentPage, totalItemsCount, pageSize, portionSize = 10 }) => {
-    debugger;
     let pagesCount = Math.ceil(totalItemsCount / pageSize)
     let pages = [];
     for (let i=1; i<=pagesCount; i++) {
